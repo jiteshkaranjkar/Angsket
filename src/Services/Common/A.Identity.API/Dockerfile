@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["A.OrderService/A.OrderService.csproj", "A.OrderService/"]
-RUN dotnet restore "A.OrderService/A.OrderService.csproj"
+COPY ["A.Identity.API/A.Identity.API.csproj", "A.Identity.API/"]
+RUN dotnet restore "A.Identity.API/A.Identity.API.csproj"
 COPY . .
-WORKDIR "/src/A.OrderService"
-RUN dotnet build "A.OrderService.csproj" -c Release -o /app/build
+WORKDIR "/src/A.Identity.API"
+RUN dotnet build "A.Identity.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "A.OrderService.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "A.Identity.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "A.OrderService.dll"]
+ENTRYPOINT ["dotnet", "A.Identity.API.dll"]
