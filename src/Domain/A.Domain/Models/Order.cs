@@ -2,13 +2,11 @@
 
 namespace A.Domain.Models
 {
-    public class Order
+    public class Order : BaseEntity
     {
-        public string Id { get; set; }
+        public string OrderId { get; set; }
 
         public int OrderNumber { get; set; }
-
-        public DateTime Date { get; set; }
 
         public OrderStatus Status { get; set; }
 
@@ -22,9 +20,9 @@ namespace A.Domain.Models
 
         public Order()
         {
-            Id = Guid.NewGuid().ToString();
+            OrderId = Guid.NewGuid().ToString();
             Customer = new Buyer();
-            Date = DateTime.Now;
+            Created = DateTime.Now;
             OrderItems = new List<OrderItem>();
         }
     }

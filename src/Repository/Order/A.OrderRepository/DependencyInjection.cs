@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace A.OrderRepository.Repository
+namespace A.OrderRepository
 {
   public static class DependencyInjection
   {

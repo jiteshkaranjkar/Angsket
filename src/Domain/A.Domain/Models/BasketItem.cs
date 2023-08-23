@@ -1,6 +1,6 @@
 ﻿namespace A.Domain.Models
 {
-    public class BasketItem : BaseEntity
+    public class BasketItem
     {
         public string Id { get; set; }
 
@@ -8,10 +8,10 @@
 
         public int Quantity { get; set; }
 
-        public BasketItem(string id, Product product, int quantity)
+        public BasketItem(int quantity)
         {
-            Id = id;
-            Product = product;
+            Id = Guid.NewGuid().ToString();
+            Product = new Product();
             Quantity = quantity;
         }
     }

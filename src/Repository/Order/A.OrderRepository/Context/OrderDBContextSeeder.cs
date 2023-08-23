@@ -14,9 +14,9 @@ namespace A.OrderRepository.Context
                 OrderNumber = 1,
                 OrderItems = new List<OrderItem>()
                 {
-                    new OrderItem(3) { Product = products[0] },
+                    new OrderItem(3) { Product = products[1] },
                     new OrderItem(2) { Product = products[0] },
-                    new OrderItem(1) { Product = products[0] },
+                    new OrderItem(1) { Product = products[3] },
                 },
                 Status = OrderStatus.InProgress
             };

@@ -1,5 +1,4 @@
 using A.Domain.Models;
-using A.OrderRepository.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace A.OrderService.API.Controllers

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace A.OrderRepository.Repository
+namespace A.OrderRepository
 {
     public interface IOrderRepository
     {

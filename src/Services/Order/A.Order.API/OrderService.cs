@@ -1,4 +1,4 @@
-﻿using A.OrderRepository.Repository;
+﻿using A.OrderRepository;
 using A.Domain.Models;
 using System.Collections.Generic;
 
@@ -13,8 +13,14 @@ namespace A.OrderService.API
             orderRepository = orderRepo;
         }
 
-        public List<Order> GetAllOrders() => orderRepository.GetAllOrders();
+        public List<Order> GetAllOrders()
+        {
+            return orderRepository.GetAllOrders();
+        }
 
-        public Order GetOrderById(string id) => orderRepository.GetOrderById(id);
+        public Order GetOrderById(string id)
+        {
+            return orderRepository.GetOrderById(id);
+        }
     }
 }

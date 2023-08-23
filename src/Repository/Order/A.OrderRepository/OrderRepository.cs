@@ -3,7 +3,7 @@ using A.OrderRepository.Context;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace A.OrderRepository.Repository
+namespace A.OrderRepository
 {
   public class OrderRepository : IOrderRepository
   {
@@ -19,9 +19,9 @@ namespace A.OrderRepository.Repository
             return _context.Orders.Local.ToList();
         }
 
-        public Order GetOrderById(string id)
+        public Order GetOrderById(string orderId)
         {
-            return _context.Orders.Where(ord => ord.Id == id).FirstOrDefault();
+            return _context.Orders.Where(ord => ord.OrderId == orderId).FirstOrDefault();
         }
     }
 }
