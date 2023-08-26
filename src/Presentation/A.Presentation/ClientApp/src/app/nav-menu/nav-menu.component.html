@@ -1,36 +1,55 @@
 <!--<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">-->
-<header>
-  <mat-toolbar color="primary" class="mat-elevation-z8">
-    <button routerLink="home" mat-icon-button aria-label="icon-button with home icon">
-      <mat-icon>home</mat-icon>
-    </button>
-    <button routerLink="" mat-button>Products</button>
-    <button routerLink="chatgpt" mat-button>Chatgpt</button>
-    <button routerLink="contact-us" mat-button>Autocomplete</button>
-    <button routerLink="" mat-button>About</button>
-    <span class="right-spacer"></span>
-    <button routerLink="search" mat-icon-button aria-label="icon-button with search icon">
-      <mat-icon>search</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="icon-button with shopping cart icon">
-      <mat-icon matBadge="4">shopping_cart</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="icon-button with account profile icon">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button aria-label="icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Basket</span>
+  <span class="right-spacer"></span>
+  <button routerLink="home" mat-button aria-label="button for home">
+    Home
+  </button>
+  <button routerLink="" mat-button>Products</button>
+  <button routerLink="chatgpt" mat-button>Chatgpt</button>
+  <button routerLink="contact-us" mat-button>Autocomplete</button>
+  <button routerLink="" mat-button>About</button>
+  <button routerLink="search" mat-icon-button aria-label="icon-button with search icon">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="icon-button with shopping cart icon">
+    <mat-icon matBadgeColor="accent" matBadge="3" [matBadgeHidden]="badgevisible" matBadgeSize="small">shopping_cart</mat-icon>
+  </button>
+  <button [matMenuTriggerFor]="lvl1master"  mat-icon-button aria-label="icon-button with account profile icon">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #lvl1master="matMenu">
+    <button mat-menu-item>Profile</button>
+    <button mat-menu-item>Orders</button>
+    <button mat-menu-item>Wishlist</button>
+    <button mat-menu-item>Settings</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item [hidden]="isLoggedIn">Login</button>
+    <button mat-menu-item [hidden]="!isLoggedIn">Logout</button>
+  </mat-menu>
+</mat-toolbar>
 
-  <!--<mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
-      </mat-nav-list>
-    </mat-sidenav>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer opened="true" mode="side" position="start">
+    <mat-nav-list>
+      <mat-list-item>
+        <button routerLink="card" mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="table" mat-button><mat-icon>table</mat-icon> Table</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button><mat-icon>settings</mat-icon> Settings</button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="text-align: center;min-height: 600px;">
 
-    <mat-sidenav-content>
-      <p *ngFor="let content of fillerContent">{{content}}</p>
-    </mat-sidenav-content>
-  </mat-sidenav-container>-->
-</header>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

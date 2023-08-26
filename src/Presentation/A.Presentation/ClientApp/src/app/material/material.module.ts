@@ -7,6 +7,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [],
@@ -18,7 +26,16 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule, MatBadgeModule
+    MatListModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

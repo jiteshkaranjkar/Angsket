@@ -11,7 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class NavMenuComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
-  isExpanded: Boolean = false;
+  isExpanded: boolean = false;
+  badgevisible: boolean = false;
+  isLoggedIn: boolean = false;
 
   fillerNav = Array.from({ length: 3 }, (_, i) => `Nav Item ${i + 1}`);
 

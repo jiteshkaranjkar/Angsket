@@ -8,7 +8,7 @@ import { LifeCycleComponent } from './lifecycle/lifecycle.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'chatgpt', component: ChatgptComponent },
   { path: 'search', component: SearchComponent },
   { path: 'lifecycle', component: LifeCycleComponent },
@@ -19,5 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }
