@@ -1,0 +1,8 @@
+<h1>products works!{{products.length}}!</h1>
+<div>
+  <product-card [products]="products" [productCount]="productCount"
+                (addProductEmitter)="receiveAddProductToCart($event)"
+                (removeProductEmitter)="receiveRemoveProductFromCart($event)"
+                (addToCart)="receiveAddToCart($event)">
+  </product-card>
+</div>

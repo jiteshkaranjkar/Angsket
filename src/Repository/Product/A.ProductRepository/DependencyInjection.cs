@@ -9,7 +9,7 @@ namespace A.ProductRepository
   {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-      services.AddDbContext<ProductDBContext>(options => options.UseInMemoryDatabase("Angsket"), ServiceLifetime.Scoped, ServiceLifetime.Scoped);
+      services.AddDbContext<ProductDBContext>(options => options.UseInMemoryDatabase("AngsketProduct"), ServiceLifetime.Scoped, ServiceLifetime.Scoped);
       services.AddScoped<IProductRepository, ProductRepository>();
 
       return services;

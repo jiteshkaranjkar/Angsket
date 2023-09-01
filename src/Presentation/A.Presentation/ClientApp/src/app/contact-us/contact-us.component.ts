@@ -7,10 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [CommonModule, MatButtonModule],
   templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.css']
+  styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent {
   constructor() {
-    alert("Hi ");
   }
 }

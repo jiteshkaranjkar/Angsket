@@ -1,6 +1,6 @@
-import { BaseEntity } from "./baseEntity";
+import { IBaseEntity } from "./baseEntity";
 
-export interface Address {
+export interface IAddress {
   Id?: string;
   Unit?: string;
   Street?: string;
@@ -11,8 +11,8 @@ export interface Address {
 }
 
 
-export interface Buyer extends BaseEntity {
+export interface IBuyer extends IBaseEntity {
   Name?: string;
   LoyaltyCard?: string;
-  Address?: Address;
+  Address?: IAddress;
 }

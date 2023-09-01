@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './lifecycle.component.html',
-  styleUrls: ['./lifecycle.component.css']
+  styleUrls: ['./lifecycle.component.scss']
 })
 export class LifeCycleComponent implements OnInit, OnChanges, OnDestroy, DoCheck, AfterContentInit, AfterViewInit, AfterContentChecked, AfterViewChecked {
 

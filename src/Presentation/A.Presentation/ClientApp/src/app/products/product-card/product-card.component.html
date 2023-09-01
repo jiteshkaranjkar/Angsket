@@ -1,0 +1,41 @@
+<div id="mainDiv">
+  <ng-container *ngFor="let product of products">
+    <mat-card class="product-card" layout="row" layout-align="center center">
+      <mat-card-header>
+        <mat-card-title>{{product?.brand}}</mat-card-title>
+        <mat-card-subtitle>{{product.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-lg-image class="product-image" src={{product.imageURL}} alt={{product.type}}>
+      <mat-card-content>
+        <div id="unitDiv">
+          $ {{product.unitPrice}}
+          <span *ngIf="product.promtionalUnitPrice" id="discountDiv">
+            Was $ {{product.unitPrice}}
+          </span>
+        </div>
+        <div id="promotionDiv">
+          {{product.promotion}}
+        </div>
+        <div id="promotionDiv">
+          {{product.promotionDescription}}
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="product-action">
+        <button primary mat-mini-fab color="primary" (click)="emitAddProductToCart(product.id)">
+          <mat-icon>add</mat-icon>
+        </button>
+        <strong>
+          <input disabled id="productCount" value="{{product.basketQuantity}}" />
+        </strong>
+        <button btn btn-primary mat-mini-fab color="primary" (click)="emitRemoveProductFromCart(product.id)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-card-actions>
+      <mat-card-footer>
+        <button id="addtoCart" mat-raised-button (click)="emitAddToCart(product.id)">Add to Cart</button>
+      </mat-card-footer>
+    </mat-card>
+  </ng-container>
+
+</div>

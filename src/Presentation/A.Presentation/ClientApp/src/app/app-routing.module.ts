@@ -5,6 +5,8 @@ import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LifeCycleComponent } from './lifecycle/lifecycle.component';
+import { ProductsComponent } from './products/products.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'chatgpt', component: ChatgptComponent },
   { path: 'search', component: SearchComponent },
   { path: 'lifecycle', component: LifeCycleComponent },
-  { path: 'contact-us', component: ContactUsComponent }
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'cart', component: CartComponent }
 ]
 
 @NgModule({

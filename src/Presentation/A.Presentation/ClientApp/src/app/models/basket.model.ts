@@ -1,14 +1,14 @@
-import { BaseEntity } from "./baseEntity";
-import { Product } from "./product";
+import { IBaseEntity } from "./baseEntity";
+import { IProduct } from "./product";
 
-export interface BasketItem {
+export interface IBasketItem {
   Id?: string;
-  Product?: Product;
+  Product: IProduct;
   Quantity?: number;
 }
 
-export interface Basket extends BaseEntity {
+export interface IBasket extends IBaseEntity {
   BasketId?: string;
-  Items?: BasketItem[];
+  Items?: IBasketItem[];
   Buyer?: string;
 }

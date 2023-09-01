@@ -1,18 +1,16 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 /** @title Responsive sidenav */
 @Component({
   selector: 'app-nav-menu',
   templateUrl: '/nav-menu.component.html',
-  styleUrls: ['/nav-menu.component.css']
+  styleUrls: ['/nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   isExpanded: boolean = false;
-  badgevisible: boolean = false;
   isLoggedIn: boolean = false;
 
   fillerNav = Array.from({ length: 3 }, (_, i) => `Nav Item ${i + 1}`);

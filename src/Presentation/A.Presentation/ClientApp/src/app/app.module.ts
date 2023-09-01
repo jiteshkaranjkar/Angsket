@@ -11,13 +11,16 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MaterialModule } from './material/material.module';
+import { ProductsModule } from './products/products.module';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { MaterialModule } from './material/material.module';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

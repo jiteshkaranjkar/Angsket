@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OpenaiService {
+export class OpenAiService {
   private openai: OpenAIApi;
   constructor(private httpClient: HttpClient) {
     this.openai = new OpenAIApi(this.configuration);

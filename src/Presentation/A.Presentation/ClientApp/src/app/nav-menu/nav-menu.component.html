@@ -8,17 +8,17 @@
   <button routerLink="home" mat-button aria-label="button for home">
     Home
   </button>
-  <button routerLink="" mat-button>Products</button>
+  <button routerLink="products" mat-button>Products</button>
   <button routerLink="chatgpt" mat-button>Chatgpt</button>
-  <button routerLink="contact-us" mat-button>Autocomplete</button>
+  <button routerLink="contact-us" mat-button>Contact</button>
   <button routerLink="" mat-button>About</button>
   <button routerLink="search" mat-icon-button aria-label="icon-button with search icon">
     <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button aria-label="icon-button with shopping cart icon">
-    <mat-icon matBadgeColor="accent" matBadge="3" [matBadgeHidden]="badgevisible" matBadgeSize="small">shopping_cart</mat-icon>
+    <cart></cart>
   </button>
-  <button [matMenuTriggerFor]="lvl1master"  mat-icon-button aria-label="icon-button with account profile icon">
+  <button [matMenuTriggerFor]="lvl1master" mat-icon-button aria-label="icon-button with account profile icon">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #lvl1master="matMenu">

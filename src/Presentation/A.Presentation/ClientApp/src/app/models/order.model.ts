@@ -1,9 +1,9 @@
-import { BaseEntity } from "./baseEntity";
-import { Product } from "./product";
+import { IBaseEntity } from "./baseEntity";
+import { IProduct } from "./product";
 
-export interface OrderItem {
+export interface IOrderItem {
   Id?: string;
-  Product?: Product;
+  Product?: IProduct;
   Quantity?: number;
 }
 
@@ -14,12 +14,12 @@ export enum OrderStatus {
   Failed = 3
 }
 
-export interface Order extends BaseEntity {
+export interface IOrder extends IBaseEntity {
   OrderId?: string;
   OrderNumber?: number;
   Status: OrderStatus;
-  Total?: Number;
+  Total?: number;
   Description?: string;
   Customer?: string;
-  OrderItems?: OrderItem[];
+  OrderItems?: IOrderItem[];
 }

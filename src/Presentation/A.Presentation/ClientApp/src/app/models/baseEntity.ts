@@ -1,8 +1,8 @@
-export interface BaseEntity {
-  id?: Number,
-  isDeleted: Boolean,
-  createdBy?: String,
+export interface IBaseEntity {
+  id?: number,
+  isDeleted: boolean,
+  createdBy?: string,
   createdOn: Date,
-  lastModifiedBy?: String,
+  lastModifiedBy?: string,
   lastModifiedOn: Date
 }

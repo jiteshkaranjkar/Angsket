@@ -17,5 +17,7 @@ namespace A.Domain.Models
         public string? Promotion { get; set; }
         public string? PromotionDescription { get; set; }
 
+        public int stockQuantity { get; set; } = 0;
+        public int basketQuantity { get; set; } = 0;
     }
 }

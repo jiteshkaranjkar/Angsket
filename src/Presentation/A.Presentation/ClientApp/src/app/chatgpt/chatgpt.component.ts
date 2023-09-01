@@ -1,18 +1,18 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { fromEvent, interval, map, Observable, of, retry, Subject, takeUntil } from 'rxjs';
-import { OpenaiService } from '../services/open-ai.service';
+import { OpenAiService } from '../services/open-ai.service';
 
 @Component({
   selector: 'chatgpt',
   templateUrl: './chatgpt.component.html',
-  styleUrls: ['./chatgpt.component.css']
+  styleUrls: ['./chatgpt.component.scss']
 })
 export class ChatgptComponent implements OnInit {
   protected ngUnsubscribe = new Subject();
   public agents: Observable<string> | undefined;
   public agentName: string | undefined;
-  constructor(private openaiService: OpenaiService) { }
+  constructor(private openaiService: OpenAiService) { }
 
   public chatGptResponse: any = "Chatgpt";
 
