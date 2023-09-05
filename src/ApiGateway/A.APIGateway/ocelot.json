@@ -7,7 +7,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 62420
+          "Port": 51201
         }
       ],
       "UpstreamPathTemplate": "/Order",
@@ -22,9 +22,9 @@
       "DownstreamPathTemplate": "/api/Basket",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
-        {
+        { 
           "Host": "localhost",
-          "Port": 56688
+          "Port": 51202
         }
       ],
       "UpstreamPathTemplate": "/Basket",
@@ -43,15 +43,15 @@
     },
     //Products API
     {
-      "DownstreamPathTemplate": "/api/Product",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/Products",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 63828
+          "Port": 7150
         }
       ],
-      "UpstreamPathTemplate": "/Product",
+      "UpstreamPathTemplate": "/Products",
       "UpstreamHttpMethod": [ "GET" ],
       "RateLimitOptions": {
         "ClientWhitelist": [],

@@ -1,4 +1,3 @@
-using A.OrderService.API;
 using A.ProductRepository;
 using A.ProductService.API;
 
