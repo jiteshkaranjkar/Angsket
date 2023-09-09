@@ -5,7 +5,7 @@ namespace A.ProductRepository.Context
 {
     public class ProductDBContextSeeder
     {
-        public void Seed(ProductDBContext dbContext)
+        public async Task Seed(ProductDBContext dbContext)
         {
             Product product = new()
             {
@@ -63,6 +63,7 @@ namespace A.ProductRepository.Context
                 PromtionalUnitPrice = 19.49
             };
             dbContext.Products.Add(product);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
@@ -15,4 +16,7 @@
     <ProjectReference Include="..\..\..\Repository\Product\A.ProductRepository\A.ProductRepository.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Protobuf Include="Proto\Product.proto" GrpcServices="Server" />
+	</ItemGroup>
 </Project>

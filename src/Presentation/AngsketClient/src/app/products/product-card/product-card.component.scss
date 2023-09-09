@@ -1,0 +1,84 @@
+#mainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.product-card {
+  height: 600px;
+  width: 380px;
+  min-height: 480px;
+  min-width: 200px;
+  max-height: 600px;
+  max-width: 350px;
+  margin-left: 20px;
+  color: grey;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.product-image {
+  background-size: cover;
+  align-self: center;
+  height: 220px;
+  width: 80px;
+  margin: auto;
+}
+
+#productCount {
+  height: 35px;
+  width: 80px;
+  margin: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#addtoCart {
+  height: 35px;
+  width: 120px;
+  margin: 20px;
+}
+
+#unitDiv {
+  padding: 5px;
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+  font-size: x-large;
+  color: black;
+}
+
+#discountDiv {
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: medium;
+  color: dimgrey;
+}
+
+#promotionDiv {
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: small;
+  color: orange;
+}
+
+@media(max-width: 595px) {
+  media {
+    height: 30px;
+    width: 75px;
+    margin: auto
+  }
+}
+
+@media (max-width: 360px) {
+  media {
+    height: 30px;
+    width: 85px;
+    margin: auto
+  }
+}

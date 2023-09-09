@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace A.ProductRepository
 {
-  public interface IProductRepository
-  {
-    List<Product> GetAllProducts();
-
-    Product GetProductById(int id);
-  }
+    public interface IProductRepository
+    {
+        Task<List<Product>> GetAllProductsAsync();
+        Task<Product> GetProductByIdAsync(int id);
+        Task<Product> UpdateProductAsync(Product product);
+    }
 }

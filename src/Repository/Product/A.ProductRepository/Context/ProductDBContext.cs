@@ -11,6 +11,5 @@ namespace A.ProductRepository.Context
             seedProducts.Seed(this);
         }
         public DbSet<Product> Products { get; set; }
-
     }
 }

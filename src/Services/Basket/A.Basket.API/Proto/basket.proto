@@ -1,0 +1,39 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcBasket";
+
+package BasketServiceApi;
+
+service Basket {
+	rpc GetBasketByIdAsync(BasketRequest) returns (BasketResponse) {}
+	rpc UpdateBasketAsync(BasketUpdateRequest) returns (BasketResponse) {}
+}
+
+message BasketRequest {
+	string buyerid = 1;
+}
+
+message BasketUpdateRequest {
+	string buyerid = 1;
+	repeated ProductResponse items = 2;
+}
+
+message BasketResponse {
+	string buyerid = 1;
+	repeated ProductResponse items = 2;
+}
+
+message ProductResponse {
+	int32 id = 1;
+	string name = 2;
+	string brand = 3;
+	string type = 4;
+	string description = 5;
+	double UnitPrice = 6;
+	double PromtionalUnitPrice = 7;
+	string ImageURL = 8;
+	string Promotion = 9;
+	string PromotionDescription = 10;
+	int32 StockQuantity = 11;
+	int32 BasketQuantity = 12;
+}

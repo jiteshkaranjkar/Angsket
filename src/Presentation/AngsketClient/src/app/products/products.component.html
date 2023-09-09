@@ -1,0 +1,8 @@
+<h1>BEERs </h1><h3>(Most popular)</h3>
+<div>
+  <product-card [products]="products" [productCount]="productCount"
+                (addProductEmitter)="receiveAddProductToCart($event)"
+                (removeProductEmitter)="receiveRemoveProductFromCart($event)"
+                (addToCart)="receiveAddToCart($event)">
+  </product-card>
+</div>

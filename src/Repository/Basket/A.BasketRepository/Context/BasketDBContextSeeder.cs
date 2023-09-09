@@ -6,19 +6,20 @@ namespace A.BasketRepository.Context
 {
     public class BasketDBContextSeeder
     {
-        public void Seed(BasketDBContext dbContext)
+        public async Task Seed(BasketDBContext dbContext)
         {
             List<Product> products = MakeProducts();
-            Basket basket = new()
+            Basket basket = new("1")
             {
-                Items = new List<BasketItem>()
+                Items = new List<Product>()
                 {
-                    new BasketItem(3) { Product = products[0] },
-                    new BasketItem(2) { Product = products[3] },
-                    new BasketItem(1) { Product = products[2] },
+                    products[0],
+                    products[3],
+                    products[2],
                 },
             };
-            dbContext.Baskets.Add(basket);
+            dbContext.Basket.Add(basket);
+            await dbContext.SaveChangesAsync();
         }
 
         private List<Product> MakeProducts()

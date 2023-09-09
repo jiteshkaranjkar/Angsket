@@ -1,5 +1,7 @@
+using A.BasketRepository;
+using A.BasketService.API;
 using A.ProductRepository;
-using A.ProductService.API;
+//using A.ProductService.API;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Web;
 
@@ -7,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddInfrastructure();
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddProductInfrastructure();
+builder.Services.AddBasketInfrastructure();
+//builder.Services.AddScoped<IProductService, ProductService>();
+//builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
     // This lambda determines whether user consent for non-essential cookies is needed for a given request.

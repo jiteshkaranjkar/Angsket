@@ -8,21 +8,26 @@ namespace A.ProductRepository
 {
     public class ProductRepository : IProductRepository
     {
-        private ProductDBContext _context;
+        private ProductDBContext productContext;
 
         public ProductRepository(ProductDBContext context)
         {
-            _context = context;
+            productContext = context;
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
-            return _context.Products.Local.ToList();
+            return productContext.Products.Local.ToList();
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            return _context.Products.Where(prod => prod.Id == id).FirstOrDefault();
+            return await productContext.Products.Where(b => b.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<Product> UpdateProductAsync(Product product)
+        {
+            return await productContext.Products.Where(prod => prod.Id == product.Id).FirstOrDefaultAsync();
         }
     }
 }

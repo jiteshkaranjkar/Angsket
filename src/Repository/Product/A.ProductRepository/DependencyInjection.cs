@@ -7,7 +7,7 @@ namespace A.ProductRepository
 {
     public static class DependencyInjection
   {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddProductInfrastructure(this IServiceCollection services)
     {
       services.AddDbContext<ProductDBContext>(options => options.UseInMemoryDatabase("AngsketProduct"), ServiceLifetime.Scoped, ServiceLifetime.Scoped);
       services.AddScoped<IProductRepository, ProductRepository>();

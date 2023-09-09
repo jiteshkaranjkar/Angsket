@@ -10,7 +10,6 @@ namespace A.BasketRepository.Context
             BasketDBContextSeeder seedBaskets = new();
             seedBaskets.Seed(this);
         }
-        public DbSet<Basket> Baskets { get; set; }
-
+        public DbSet<Basket> Basket { get; set; }
     }
 }

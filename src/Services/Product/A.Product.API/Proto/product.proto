@@ -1,0 +1,50 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcProduct";
+
+package ProductServiceApi;
+
+service Product {
+	rpc GetAllProductAsync(ProductsRequest) returns (ProductsResponse) {}
+	rpc GetProductByIdAsync(ProductRequest) returns (ProductResponse) {}
+	rpc UpdateProductAsync(ProductUpdateRequest) returns (ProductResponse) {}
+	rpc AddProductAsync(ProductRequest) returns (ProductResponse) {}
+}
+
+message ProductsRequest {
+	string ids = 1;
+	int32 pageSize = 2;
+	int32 pageIndex = 3;
+}
+
+message ProductRequest {
+	int32 id = 1;
+}
+
+message ProductUpdateRequest {
+	int32 id = 1;
+	ProductResponse data = 2;
+}
+
+message ProductsResponse {
+	int64 count = 1;
+	repeated ProductResponse data = 2;
+	int32 pageIndex = 3;
+	int32 pageSize = 4;
+
+}
+
+message ProductResponse {
+	int32 id = 1;
+	string name = 2;
+	string brand = 3;
+	string type = 4;
+	string description = 5;
+	double UnitPrice = 6;
+	double PromtionalUnitPrice = 7;
+	string ImageURL = 8;
+	string Promotion = 9;
+	string PromotionDescription = 10;
+	int32 StockQuantity = 11;
+	int32 BasketQuantity = 12;
+}

@@ -1,7 +1,7 @@
-﻿using A.Domain.Models;
+﻿using A.APIGateway.Models;
 using System.Collections.Generic;
 
-namespace A.ProductService.API
+namespace A.APIGateway.Contracts
 {
     public interface IProductService
     {

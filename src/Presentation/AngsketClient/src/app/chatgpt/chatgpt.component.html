@@ -1,0 +1,12 @@
+<div>
+  <h2>Chat GPT</h2>
+  <div *ngIf="agentName">
+    {{agentName}}
+  </div>
+  <p>
+    Send a message!
+    <input #inputQuery id="inputQuery" placeholder="Enter a query" autocomplete="on" type="text" />
+    <button #sendQuery type="button" class="btn-primary" (click)="getObservableChatGptResponse(inputQuery.value)">Send query</button>
+    <label>{{chatGptResponse}}</label>
+  </p>
+</div>

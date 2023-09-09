@@ -4,6 +4,8 @@ namespace A.APIGateway.Models
 {
     public abstract class BaseEntity
     {
+        [Key]
+        public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime Created { get; set; }

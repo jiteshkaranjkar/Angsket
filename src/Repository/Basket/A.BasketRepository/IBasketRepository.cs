@@ -6,8 +6,8 @@ namespace A.BasketRepository
 {
     public interface IBasketRepository
     {
-        List<Basket> GetAllBaskets();
-
-        Basket GetBasketById(string id);
+        Task<Basket> GetBasketByIdAsync(string buyerid);
+        Task<Basket> UpdateBasketAsync(Basket basket);
+        bool DeleteBasket();
     }
 }

@@ -22,13 +22,13 @@
       "DownstreamPathTemplate": "/api/Basket",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
-        { 
+        {
           "Host": "localhost",
-          "Port": 51202
+          "Port": 7150
         }
       ],
       "UpstreamPathTemplate": "/Basket",
-      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,

@@ -5,8 +5,8 @@ namespace A.BasketService.API
 {
     public interface IBasketService
     {
-        List<Basket> GetAllBasket();
+        Basket GetBasketById(string buyerid);
 
-        Basket GetBasketById(string id);
+        Basket UpdateBasket(Basket basket);
     }
 }

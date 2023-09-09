@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit, ViewChild, EventEmitter, Input, Output } from '@angular/core';
 import { catchError } from 'rxjs';
 import { IProduct } from '../models/product';
-import { IBasketItem } from '../models/basket.model';
 import { ProductsService } from './product.service';
-import { BasketService } from '../services/basket.service';
+import { BasketService } from '../basket/basket.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductCardComponent } from './product-card/product-card.component';
 
@@ -23,9 +22,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
+
   loadData() {
     this.getProducts();
   }
+
   getProducts() {
     this.productService.getProducts()
       .pipe(catchError((err) => this.handleError(err)))
@@ -33,6 +34,7 @@ export class ProductsComponent implements OnInit {
         this.products = result;
       })
   }
+
   handleError(err: any): any {
     throw new Error('Method not implemented.');
   }
@@ -46,10 +48,14 @@ export class ProductsComponent implements OnInit {
   }
 
   public receiveAddToCart(productId: number) {
-    const product = this.products.filter((x) => x.id == productId)[0];
-    const basketItem: IBasketItem = {
-      Product: product
-    }
-    this.basketservice.addBasketItem.next(basketItem);
+    this.basketservice.addBasketItem.next(this.products.filter((x) => x.id == productId)[0]);
+  }
+
+  updateBasket() {
+    this.basketservice.updateBasket()
+      .pipe(catchError((err) => this.handleError(err)))
+      .subscribe((result: any) => {
+        this.products = result;
+      })
   }
 }

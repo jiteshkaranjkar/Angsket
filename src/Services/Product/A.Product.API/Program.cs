@@ -1,16 +1,16 @@
 using A.ProductRepository;
-using A.ProductService.API;
+using GrpcProduct;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddGrpc();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddInfrastructure();
-//builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddProductInfrastructure();
 
 var app = builder.Build();
 
@@ -20,6 +20,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGrpcService<ProductService>();
 
 app.UseHttpsRedirection();
 

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { IBasket, IBasketItem } from '../models/basket.model';
-import { BasketService } from '../services/basket.service';
+import { catchError, Subscription, throwError } from 'rxjs';
+import { IBasket } from '../models/basket.model';
+import { BasketService } from '../basket/basket.service';
 
 @Component({
   selector: 'cart',
@@ -12,32 +12,27 @@ export class CartComponent implements OnInit {
   badgevisible: boolean = false;
   addBasketItem: Subscription | undefined;
   public itemCount: number = 0;
+  errorReceived: boolean | undefined;
 
   constructor(private basketService: BasketService) {
 
   }
-  ngOnInit(): void {
-    this.addBasketItem = this.basketService.addBasketItem.subscribe(item => {
-      this.itemCount = 0;
-      if (this.basketService.basket?.Items?.length === 0) {
-        this.basketService.basketItems.push(item);
-        this.basketService.basket?.Items?.
-          filter(x => x.Product.id === item.Product.id).
-          map(x => x.Product.basketQuantity == item.Product.basketQuantity);
 
-      }
-      else {
-        const basketItem = this.basketService.basket?.Items?.filter(x => x.Product.id === item.Product.id)[0];
-        if (basketItem) {
-          this.basketService.basket?.Items?.filter(x => x.Product.id === item.Product.id).map(x => x.Product.basketQuantity == item.Product.basketQuantity);
-        } else {
-          this.basketService.basketItems.push(item);
-          this.basketService.basket?.Items?.
-            filter(x => x.Product.id === item.Product.id).
-            map(x => x.Product.basketQuantity == item.Product.basketQuantity);
-        }
-      }
-      this.basketService.basket?.Items?.forEach(item => { this.itemCount += item.Product.basketQuantity });
+  ngOnInit(): void {
+    this.itemCount = this.basketService.totalBasketItems;
+    this.addBasketItem = this.basketService.addBasketItem.subscribe(item => {
+      this.errorReceived = false;
+      this.itemCount = this.basketService.addBasketItems(item);
+      //this.basketService.updateBasket()
+      //  .pipe(catchError((err) => this.handleError(err)))
+      //  .subscribe((result: any) => {
+      //    console.log(result);
+      //  });
     });
+  }
+
+  handleError(error: any): any {
+    this.errorReceived = true;
+    return throwError(() => error);
   }
 }

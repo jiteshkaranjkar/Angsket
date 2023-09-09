@@ -2,16 +2,13 @@
 {
     public class Basket : BaseEntity
     {
-        public string Id { get; set; }
+        public string BuyerId { get; set; }
 
-        public List<BasketItem> Items { get; set; } = new();
+        public List<Product> Items { get; set; } = new();
 
-        public Customer Customer { get; set; }
-
-        public Basket(string id, Customer customer)
+        public Basket(string buyerId)
         {
-            Id = id;
-            Customer = customer;
+            BuyerId = buyerId;
         }
     }
 }
