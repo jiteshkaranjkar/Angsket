@@ -5,7 +5,7 @@ namespace A.APIGateway.Services.Concretes
 {
     public class OrderService : IOrderService
     {
-        public Task<Order> GetOrderAsync(Basket basket)
+        public Task<Order> GetOrderAsync(BasketEntity basket)
         {
             throw new NotImplementedException();
         }

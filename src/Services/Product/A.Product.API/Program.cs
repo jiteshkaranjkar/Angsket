@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGrpcService<ProductService>();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -1,12 +1,12 @@
 ﻿using A.APIGateway.Models;
 using System.Collections.Generic;
 
-namespace A.APIGateway.Contracts
+namespace A.APIGateway.Services.Contracts
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
+        List<ProductEntity> GetAllProducts();
 
-        Product GetProductById(int id);
+        ProductEntity GetProductById(int id);
     }
 }

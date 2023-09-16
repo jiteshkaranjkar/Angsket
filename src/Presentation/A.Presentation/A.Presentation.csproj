@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Repository\Product\A.ProductRepository\A.ProductRepository.csproj" />
     <ProjectReference Include="..\..\Services\Basket\A.Basket.API\A.BasketService.API.csproj" />
     <ProjectReference Include="..\..\Services\Product\A.Product.API\A.ProductService.API.csproj" />

@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { IBasket } from '../models/basket.model';
+import { IBasket } from '../shared/models/basket.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, Subject, Subscription, throwError } from 'rxjs';;
 import { catchError, map, take, tap } from 'rxjs/operators';
-import { HelperService } from '../services/helper.service';
-import { IProduct } from '../models/product';
+import { HelperService } from '../shared/services/helper.service';
+import { IProduct } from '../shared/models/product.model';
+import { ConfigurationService } from '../shared/services/ConfigurationService';
 
 
 
@@ -12,7 +13,10 @@ import { IProduct } from '../models/product';
   providedIn: 'root'
 })
 export class BasketService {
+
+  private basketUrl: string = '';
   basket: IBasket | undefined;
+
   addBasketItem: Subject<IProduct>;
   updateBasketItem: Subject<IProduct>;
   basketItems: Array<IProduct>;
@@ -23,34 +27,46 @@ export class BasketService {
   private basketUpdateSource = new Subject<void>();
   basketUpdate$ = this.basketUpdateSource.asObservable();
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private helperservice: HelperService) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private helperservice: HelperService, private configurationService: ConfigurationService) {
+    if (this.configurationService.isReady) {
+      this.basketUrl = this.configurationService.serverConfig?.purchaseUrl!;
+    }
     this.addBasketItem = new Subject<IProduct>();
     this.updateBasketItem = new Subject<IProduct>();
     this.basketItems = new Array<IProduct>();
-    this.basket = { Items: this.basketItems, createdOn: new Date(), isDeleted: false, lastModifiedOn: new Date() };
+    this.basket = { buyerId: "1", items: this.basketItems, createdOn: new Date(), isDeleted: false, lastModifiedOn: new Date() };
+    this.loadData();
+  }
+
+  loadData() {
+    this.getBasket().
+      subscribe(res => {
+        if (res != null)
+        this.basket = res
+      });
   }
 
   addBasketItems(item: IProduct) {
     this.totalBasketItems = 0;
-    if (this.basket?.Items?.length === 0) {
+    if (this.basket?.items?.length === 0) {
       this.basketItems.push(item);
-      this.basket?.Items?.
+      this.basket?.items?.
         filter(x => x.id === item.id).
         map(x => x.basketQuantity == item.basketQuantity);
 
     }
     else {
-      const basketItem = this.basket?.Items?.filter(x => x.id === item.id)[0];
+      const basketItem = this.basket?.items?.filter(x => x.id === item.id)[0];
       if (basketItem) {
-        this.basket?.Items?.filter(x => x.id === item.id).map(x => x.basketQuantity == item.basketQuantity);
+        this.basket?.items?.filter(x => x.id === item.id).map(x => x.basketQuantity == item.basketQuantity);
       } else {
         this.basketItems.push(item);
-        this.basket?.Items?.
+        this.basket?.items?.
           filter(x => x.id === item.id).
           map(x => x.basketQuantity == item.basketQuantity);
       }
     }
-    this.basket?.Items?.forEach(item => { this.totalBasketItems += item.basketQuantity });
+    this.basket?.items?.forEach(item => { this.totalBasketItems += item.basketQuantity });
 
     this.addBasket(this.basket)
       .pipe(catchError((err) => this.handleError(err)))
@@ -62,7 +78,7 @@ export class BasketService {
   }
 
   getBasket(): Observable<any> {
-    return this.http.get<IBasket>(this.baseUrl + 'api/baskets')
+    return this.http.get<IBasket>(this.baseUrl + 'b/api/v1/basket/' + this.basket?.buyerId)
       .pipe((result: any) => result)
   }
 

@@ -2,7 +2,7 @@
 
 namespace A.APIGateway.Models
 {
-    public class Product : BaseEntity
+    public class ProductEntity : BaseEntity
     {
         public string? Name { get; set; }
         public string? Brand { get; set; }

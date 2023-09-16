@@ -1,7 +1,7 @@
-using A.APIGateway.Contracts;
 using A.APIGateway.Models;
 using A.APIGateway.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace A.APIGateway.Controllers
 {
@@ -19,18 +19,18 @@ namespace A.APIGateway.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        [HttpPut]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Basket>> GetBasketAsync([FromBody] UpdateBasketRequest basketRequest)
+        public async Task<ActionResult<BasketEntity>> GetBasketAsync([FromBody] string buyerId)
         {
-            return null;
+            var currentBasket = (await basketService.GetBasketByIdAsync(buyerId));
+            return currentBasket;
         }
 
         [HttpPost]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Basket>> UpdateBasketAsync([FromBody] UpdateBasketRequest basketRequest)
+        public async Task<ActionResult<BasketEntity>> UpdateBasketAsync([FromBody] UpdateBasketRequest basketRequest)
         {
             if (basketRequest.Items == null || !basketRequest.Items.Any())
             {
@@ -38,7 +38,7 @@ namespace A.APIGateway.Controllers
             }
 
             // Retrieve the current basket
-            var basket = new Basket(basketRequest.BuyerId);
+            var basket = new BasketEntity(basketRequest.BuyerId);
 
             // group by product id to avoid duplicates
             var itemsCalculated = basketRequest
@@ -56,7 +56,7 @@ namespace A.APIGateway.Controllers
                 var itemInBasket = basket.Items.FirstOrDefault(x => x.Id == bitem.ProductId);
                 if (itemInBasket == null)
                 {
-                    basket.Items.Add(new Product()
+                    basket.Items.Add(new ProductEntity()
                     {
                         Id = bitem.ProductId,
                         //Name = bitem.,

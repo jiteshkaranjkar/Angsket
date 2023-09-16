@@ -1,4 +1,4 @@
-import { IBaseEntity } from "./baseEntity";
+import { IBaseEntity } from "./baseEntity.model";
 
 export interface IProduct extends IBaseEntity {
   id: number;
@@ -6,8 +6,8 @@ export interface IProduct extends IBaseEntity {
   brand?: string;
   type?: string;
   description?: string;
-  unitPrice?: number;
-  promtionalUnitPrice?: number;
+  unitPrice: number;
+  promtionalUnitPrice: number;
   imageURL?: string;
   promotion?: string;
   promotionDescription?: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { IBasket } from '../models/basket.model';
+import { IBasket } from '../shared/models/basket.model';
 import { BasketService } from './basket.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { BasketService } from './basket.service';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
+  totalPrice: number = 0;
   basket: IBasket | undefined;
   constructor(private basketService: BasketService) {
     this.basketService.updateBasket().subscribe(x => {
@@ -19,17 +20,16 @@ export class BasketComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadBasket();
-  }
-
-  loadBasket() {
     this.getBasket();
   }
 
   getBasket() {
     this.basketService.getBasket()
       .pipe(catchError((err) => this.handleError(err)))
-      .subscribe(basket => { this.basket = basket })
+      .subscribe(basket => {
+        this.basket = basket;
+        this.calculateTotalPrice();
+      })
   }
 
   handleError(err: any): any {
@@ -41,9 +41,16 @@ export class BasketComponent implements OnInit {
     let setBasketObservable = this.basketService.updateBasket();
     setBasketObservable
       .subscribe((x) => {
-          console.log('basket updated: ' + x);
-        },
+        console.log('basket updated: ' + x);
+      },
         errMessage => console.log(errMessage.messages));
     return setBasketObservable;
-  }     
+  }
+
+  private calculateTotalPrice() {
+    this.totalPrice = 0;
+    this.basket?.items?.forEach(item => {
+      this.totalPrice += (item.unitPrice * item.basketQuantity);
+    });
+  }
 }

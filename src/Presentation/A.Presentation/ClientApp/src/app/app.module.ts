@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SearchComponent } from './search/search.component';
@@ -25,6 +26,7 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     BrowserModule,
+    SharedModule.forRoot(),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

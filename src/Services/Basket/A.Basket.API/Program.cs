@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
 }
 app.MapGrpcService<BasketService>();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

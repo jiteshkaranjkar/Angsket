@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild, EventEmitter, Input, Output } from '@angular/core';
 import { catchError } from 'rxjs';
-import { IProduct } from '../models/product';
+import { IProduct } from '../shared/models/product.model';
 import { ProductsService } from './product.service';
 import { BasketService } from '../basket/basket.service';
 import { MatButtonModule } from '@angular/material/button';

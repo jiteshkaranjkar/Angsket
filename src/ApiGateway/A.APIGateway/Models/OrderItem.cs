@@ -4,11 +4,11 @@
     {
         public string Id { get; set; }
 
-        public Product Product { get; set; }
+        public ProductEntity Product { get; set; }
 
         public int Quantity { get; set; }
 
-        public OrderItem(string id, Product product, int quantity)
+        public OrderItem(string id, ProductEntity product, int quantity)
         {
             Id = id;
             Product = product;

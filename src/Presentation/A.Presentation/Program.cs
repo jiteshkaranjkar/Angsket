@@ -1,8 +1,9 @@
 using A.BasketRepository;
 using A.BasketService.API;
+using A.Presentation;
 using A.ProductRepository;
-//using A.ProductService.API;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,9 +44,17 @@ else
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+#pragma warning disable ASP0014 // Suggest using top level route registrations
+app.UseEndpoints(routes =>
+{
+    // TODO: Change this route
+    routes.MapGet("/home/configuration", (IOptions<AppSettings> options) => options.Value);
+});
+
 
 app.UseAuthentication();
 app.UseAuthorization();

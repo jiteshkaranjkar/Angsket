@@ -4,6 +4,6 @@ namespace A.APIGateway.Services.Contracts
 {
     public interface IOrderService
     {
-        Task<Order> GetOrderAsync(Basket basket);
+        Task<Order> GetOrderAsync(BasketEntity basket);
     }
 }

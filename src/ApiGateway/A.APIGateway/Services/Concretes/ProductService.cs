@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace A.ProductService.API
+namespace A.APIGateway.Services.Concretes
 {
     public class ProductService //: IProductService
     {

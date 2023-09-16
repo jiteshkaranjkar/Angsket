@@ -15,7 +15,7 @@ namespace GrpcBasket
         }
 
         [AllowAnonymous]
-        public override async Task<BasketResponse> GetBasketByIdAsync(BasketRequest request, ServerCallContext context)
+        public override async Task<BasketResponse> GetBasketById(BasketRequest request, ServerCallContext context)
         {
             _logger.LogInformation($"Begin grpc call from method {context.Method} for basket id {request.Buyerid}");
             var basket = await basketRepository.GetBasketByIdAsync(request.Buyerid);
@@ -31,7 +31,7 @@ namespace GrpcBasket
             return new BasketResponse();
         }
 
-        public override async Task<BasketResponse> UpdateBasketAsync(BasketUpdateRequest request, ServerCallContext context)
+        public override async Task<BasketResponse> UpdateBasket(BasketUpdateRequest request, ServerCallContext context)
         {
             _logger.LogInformation($"Begin grpc call BasketService.UpdateBasketAsync for buyer id {request.Buyerid}");
 

@@ -5,8 +5,8 @@ option csharp_namespace = "GrpcBasket";
 package BasketServiceApi;
 
 service Basket {
-	rpc GetBasketByIdAsync(BasketRequest) returns (BasketResponse) {}
-	rpc UpdateBasketAsync(BasketUpdateRequest) returns (BasketResponse) {}
+	rpc GetBasketById(BasketRequest) returns (BasketResponse) {}
+	rpc UpdateBasket(BasketUpdateRequest) returns (BasketResponse) {}
 }
 
 message BasketRequest {
